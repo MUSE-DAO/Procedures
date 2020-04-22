@@ -1,1 +1,48 @@
-Hallo
+VERSION 1.0
+
+This will:
+GENERATE A CUSTOM MAP IMAGE WITH A RED GEOMARKER IN YOUR LOCATION
+CONNECT THE MAP TO HIVEMAP
+GENERATE AND STORE A GEOMARKER AT HIVEMUSE.COM
+
+
+Deploy inworld an image of 3x3 voxels or more.
+This image will be your map, set it at the right postion.
+Now face the map with your avatar and copy the coordinates of your location from the browser URL.
+You should get something like N@373E,25S or N@373E,10U,25S
+
+Note:
+Coordinates starting with NE@ or SE@ or SW@ or NW@ ara not accepted
+Only coordinates starting with N@, S@, W@, E@ are accepted.
+
+Now PASTE your coordinates in the following script.
+And choose the marker type you want between: commercial,art,culture,institutional,entertainment
+
+////////////////////////////////////
+
+let coords="PASTE_YOUR_COORDINATES_HERE";
+let parcelType="CHOOSE_THE_MARKER_TYPE_HERE";
+let version=1;
+let description="";
+let d = new Date();
+let date=d.getDay();
+
+feature.set({url:"http://hivemuse.com/map-image.php?coords="+coords+"&version="+version+"&date="+date+"&terminal=map"});
+feature.set({link:"http://hivemuse.com/?coords="+coords+"&version="+version+"&date="+date+"&terminal=map"+"&type="+parcelType});
+
+////////////////////////////////////
+
+Now add the script to the image (map).
+When you reload the page the script will add a URL and a HYPERLINK to your map.
+CV will pull an image of the map for you with a marker "YOU ARE HERE".
+Your map is now connected to MuseMap.
+In case you experience problems in displaying the map:
+Edit the map (E) and force saving data. (in the UI click on the image tab at the top and the floppy will appear).
+Actually... after the second reload you should see the map with the marker in your location.
+
+NOTE:
+The marker will expire in one week.
+Everytime someone clicks the map, he will postpone your geomarker expiration to one week later from the click.
+Autoexpiring markers are meant to keep the map clean from terminals that may not exist anymore.
+
+Wait for the next version of the script.
